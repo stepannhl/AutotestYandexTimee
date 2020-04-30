@@ -4,10 +4,10 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public  class Base {
+public class Base {
 
     private WebDriver driver;
-    Base(WebDriver driver){
+    public Base(WebDriver driver){
         this.driver = driver;
     }
     private By add_Button_Locator = By.xpath("//button[contains(@class, 'app__add-clock')]");
