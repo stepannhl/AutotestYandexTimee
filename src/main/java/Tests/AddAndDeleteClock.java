@@ -18,11 +18,10 @@ public class AddAndDeleteClock extends InitDriver {
     public void Add_And_Remove_City(){
         Base base = PageFactory.initElements(driver, Base.class);
 
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         base.OpenSite();
         base.Add_Button();
         base.Add_Or_Delete(true);
-
         base.CheckElement();
     }
 
