@@ -1,37 +1,50 @@
 package Pages;
 
+import com.google.common.base.Preconditions;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class Base {
+import java.util.NoSuchElementException;
+import java.util.concurrent.TimeUnit;
 
-    private WebDriver driver;
+public class Base extends LocatorsPage {
+    private  WebDriver driver;
+
     public Base(WebDriver driver){
         this.driver = driver;
     }
-    private By add_Button_Locator = By.xpath("//button[contains(@class, 'app__add-clock')]");
-    private By cityLocator = By.xpath("//ul[@class='popup__items input__popup-items']//div[contains(text(), 'Агрыз')]");
-    private By inputLocator = By.xpath("//div[contains(@class, 'tile_adding_yes')]//input[@class='input__control']");
-    private By CheckCityLocator = By.xpath("//div[contains(text(), 'Агрыз')]");
-    private String NameOfCity ="Агрыз";
+
+    public void OpenSite(){
+        driver.get(TestingSite());
+    }
 
     public void Add_Button(){
-        driver.findElement(add_Button_Locator).click();
+        driver.findElement(Add_Button_locator()).click();
 
     }
 
     public void Add_Or_Delete(boolean check)
     {
         if(check) {
-            driver.findElement(inputLocator).sendKeys(NameOfCity);
-            driver.findElement(cityLocator).click();
+            driver.findElement(inputLocator()).sendKeys(NameOfCity());
+            driver.findElement(cityLocator()).click();
         }
     }
+
+
     public void CheckElement()    {
         try{
-            Assert.assertNotNull(CheckCityLocator);}
+            Assert.assertTrue(driver.findElement(Check_CityLocator())!=null);}
         catch(AssertionError e) {
             Assert.fail("Result element cannot find.");}
     }
+
+
+
 }

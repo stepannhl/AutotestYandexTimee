@@ -19,6 +19,7 @@ public class AddAndDeleteClock extends InitDriver {
         Base base = PageFactory.initElements(driver, Base.class);
 
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        base.OpenSite();
         base.Add_Button();
         base.Add_Or_Delete(true);
 

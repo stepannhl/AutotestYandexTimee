@@ -16,8 +16,7 @@ public class InitDriver {
             System.setProperty("webdriver.chrome.driver", "C:\\WebDrivers\\chromedriver.exe");
             driver = new ChromeDriver();
             driver.manage().window().maximize();
-            driver.get("https://yandex.ru/time/");
-            new WebDriverWait(driver, 10);
+
         }
 
         @After
